@@ -1,733 +1,628 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>IAPE - Educação que transforma</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
+<title>IAPE - Educação que transforma</title>
 
-    html{
-      scroll-behavior:smooth;
-    }
+<style>
 
-    body{
-      font-family: Arial, Helvetica, sans-serif;
-      background:#0b0f14;
-      color:white;
-      overflow-x:hidden;
-    }
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
-    /* =========================
-       CONFIGURAÇÃO GERAL
-    ========================== */
+html{
+  scroll-behavior:smooth;
+}
 
-    :root{
-      --primary:#1d5cff;
-      --dark:#081420;
-      --yellow:#ffcb2f;
-      --white:#ffffff;
-    }
+body{
+  font-family:Arial, Helvetica, sans-serif;
+  background:#0b0f14;
+  color:white;
+  overflow-x:hidden;
+}
 
-    /* =========================
-       HEADER
-    ========================== */
+:root{
+  --primary:#1d5cff;
+  --dark:#081420;
+  --yellow:#ffcb2f;
+  --white:#ffffff;
+}
 
-    .hero{
-      width:100%;
-      min-height:100vh;
-      position:relative;
-      background:
-      linear-gradient(
-        rgba(0,0,0,.55),
-        rgba(0,0,0,.55)
-      ),
-      url('https://s.educacaoadventista.org.br/escola/estruturas/SSdYmfHh2ZDKcc5WWHkdEsbT3IEzKsJ4RpdWARnP.png');
-      background-size:cover;
-      background-position:center;
-      overflow:hidden;
-    }
+/* =====================================
+   HERO
+===================================== */
 
-    .topbar{
-      width:100%;
-      padding:18px 40px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      position:fixed;
-      top:0;
-      left:0;
-      z-index:999;
-      background:rgba(0,0,0,.25);
-      backdrop-filter:blur(8px);
-      transition:.3s;
-    }
+.hero{
+  width:100%;
+  min-height:100vh;
+  position:relative;
 
-    .topbar.scrolled{
-      background:rgba(0,0,0,.85);
-      padding:14px 40px;
-    }
+  background:
+  linear-gradient(
+    rgba(0,0,0,.55),
+    rgba(0,0,0,.55)
+  ),
+  url('https://s.educacaoadventista.org.br/escola/estruturas/SSdYmfHh2ZDKcc5WWHkdEsbT3IEzKsJ4RpdWARnP.png');
 
-    .logo{
-      display:flex;
-      align-items:center;
-      gap:14px;
-    }
+  background-size:cover;
+  background-position:center;
+  overflow:hidden;
+}
 
-    .logo-icon{
+/* =====================================
+   HEADER
+===================================== */
+
+.topbar{
+  width:100%;
+  padding:18px 40px;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  position:fixed;
+  top:0;
+  left:0;
+
+  z-index:999;
+
+  background:rgba(0,0,0,.25);
+  backdrop-filter:blur(8px);
+
+  transition:.3s;
+}
+
+.topbar.scrolled{
+  background:rgba(0,0,0,.85);
+  padding:14px 40px;
+}
+
+/* =====================================
+   LOGO
+===================================== */
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+.logo-icon{
   width:55px;
   height:55px;
   border-radius:12px;
   overflow:hidden;
+
   display:flex;
   justify-content:center;
   align-items:center;
+
   background:white;
 }
 
-    .logo-text h1{
-      font-size:30px;
-      line-height:1;
-    }
+.logo-icon img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
 
-    .logo-text span{
-      font-size:13px;
-      opacity:.85;
-    }
+.logo-text h1{
+  font-size:30px;
+  line-height:1;
+}
 
-    .menu{
-      display:flex;
-      align-items:center;
-      gap:35px;
-    }
+.logo-text span{
+  font-size:13px;
+  opacity:.85;
+}
 
-    .menu a{
-      color:white;
-      text-decoration:none;
-      font-size:22px;
-      position:relative;
-      transition:.3s;
-    }
+/* =====================================
+   ÁREA DIREITA
+===================================== */
 
-    .menu a:hover{
-      color:var(--yellow);
-    }
+.right-area{
+  display:flex;
+  align-items:center;
+  gap:25px;
+}
 
-    .menu a.active{
-      color:var(--yellow);
-    }
+/* =====================================
+   MENU
+===================================== */
 
-    .menu-toggle{
-      width:45px;
-      height:35px;
-      display:none;
-      flex-direction:column;
-      justify-content:space-between;
-      cursor:pointer;
-    }
+.menu{
+  display:flex;
+  align-items:center;
+  gap:35px;
+}
 
-    .menu-toggle span{
-      width:100%;
-      height:5px;
-      background:white;
-      border-radius:20px;
-      transition:.3s;
-    }
+.menu a{
+  color:white;
+  text-decoration:none;
+  font-size:22px;
+  transition:.3s;
+}
 
-    /* =========================
-       HERO CONTENT
-    ========================== */
+.menu a:hover{
+  color:var(--yellow);
+}
 
-    .hero-content{
-      width:100%;
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      padding:140px 60px 80px;
-    }
+.menu a.active{
+  color:var(--yellow);
+}
 
-    .hero-left{
-      max-width:700px;
-    }
+/* =====================================
+   BOTÃO SANDUÍCHE
+===================================== */
 
-    .subtitle{
-      color:#2f72ff;
-      font-size:28px;
-      margin-bottom:10px;
-      display:flex;
-      align-items:center;
-      gap:15px;
-    }
+.menu-toggle{
+  width:45px;
+  height:35px;
 
-    .subtitle::before{
-      content:'';
-      width:45px;
-      height:2px;
-      background:#2f72ff;
-    }
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
 
-    .hero-title{
-      font-size:clamp(55px, 9vw, 100px);
-      font-weight:300;
-      line-height:1.1;
-      margin-bottom:40px;
-    }
+  cursor:pointer;
+  z-index:1001;
+}
 
-    .hero-title .blue{
-      color:#2f72ff;
-      font-weight:500;
-    }
+.menu-toggle span{
+  width:100%;
+  height:5px;
+  background:white;
+  border-radius:20px;
+  transition:.3s;
+}
 
-    .play-btn{
-      background:#0f2b4b;
-      border:none;
-      color:white;
-      padding:22px 34px;
-      border-radius:60px;
-      font-size:22px;
-      display:flex;
-      align-items:center;
-      gap:18px;
-      cursor:pointer;
-      transition:.3s;
-    }
+/* ANIMAÇÃO */
 
-    .play-btn:hover{
-      transform:translateY(-3px);
-      background:#123b67;
-    }
+.menu-toggle.active span:nth-child(1){
+  transform:translateY(15px) rotate(45deg);
+}
 
-    .play-icon{
-      width:44px;
-      height:44px;
-      border-radius:50%;
-      border:2px solid white;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      font-size:18px;
-    }
+.menu-toggle.active span:nth-child(2){
+  opacity:0;
+}
 
-    /* =========================
-       MODAL VÍDEO
-    ========================== */
+.menu-toggle.active span:nth-child(3){
+  transform:translateY(-15px) rotate(-45deg);
+}
 
-    .video-modal{
-      position:fixed;
-      inset:0;
-      background:rgba(0,0,0,.85);
-      display:none;
-      justify-content:center;
-      align-items:center;
-      z-index:2000;
-      padding:20px;
-    }
+/* =====================================
+   HERO CONTENT
+===================================== */
 
-    .video-box{
-      width:100%;
-      max-width:900px;
-      aspect-ratio:16/9;
-      background:#000;
-      border-radius:20px;
-      overflow:hidden;
-      position:relative;
-    }
+.hero-content{
+  width:100%;
+  min-height:100vh;
 
-    .video-box iframe{
-      width:100%;
-      height:100%;
-      border:none;
-    }
+  display:flex;
+  align-items:center;
 
-    .close-modal{
-      position:absolute;
-      top:-50px;
-      right:0;
-      background:white;
-      color:black;
-      border:none;
-      width:40px;
-      height:40px;
-      border-radius:50%;
-      font-size:20px;
-      cursor:pointer;
-    }
+  padding:140px 60px 80px;
+}
 
-    /* =========================
-       SEÇÃO DEMO
-    ========================== */
+.hero-left{
+  max-width:700px;
+}
 
-    .section{
-      padding:100px 30px;
-      background:#081420;
-    }
+.subtitle{
+  color:#2f72ff;
+  font-size:28px;
 
-    .container{
-      max-width:1200px;
-      margin:auto;
-    }
+  margin-bottom:10px;
 
-    .section-title{
-      font-size:48px;
-      margin-bottom:50px;
-    }
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
 
-    .card-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-      gap:30px;
-    }
+.subtitle::before{
+  content:'';
+  width:45px;
+  height:2px;
+  background:#2f72ff;
+}
 
-    .card{
-      background:#102133;
-      padding:30px;
-      border-radius:24px;
-      transition:.3s;
-    }
+.hero-title{
+  font-size:clamp(55px, 9vw, 100px);
+  font-weight:300;
+  line-height:1.1;
 
-    .card:hover{
-      transform:translateY(-8px);
-    }
+  margin-bottom:40px;
+}
 
-    .card h3{
-      margin-bottom:15px;
-      font-size:28px;
-    }
+.hero-title .blue{
+  color:#2f72ff;
+  font-weight:500;
+}
 
-    .card p{
-      opacity:.8;
-      line-height:1.6;
-    }
+/* =====================================
+   BOTÃO VÍDEO
+===================================== */
 
-    /* =========================
-       FORMULÁRIO
-    ========================== */
+.play-btn{
+  background:#0f2b4b;
+  border:none;
 
-    .form-area{
-      margin-top:60px;
-      background:#102133;
-      padding:40px;
-      border-radius:25px;
-    }
+  color:white;
 
-    .form-area h2{
-      margin-bottom:25px;
-      font-size:35px;
-    }
+  padding:22px 34px;
+  border-radius:60px;
 
-    .input-group{
-      display:flex;
-      gap:15px;
-      flex-wrap:wrap;
-    }
+  font-size:22px;
 
-    .input-group input{
-      flex:1;
-      min-width:250px;
-      padding:18px;
-      border:none;
-      border-radius:15px;
-      font-size:18px;
-      outline:none;
-    }
+  display:flex;
+  align-items:center;
+  gap:18px;
 
-    .input-group button{
-      background:var(--primary);
-      color:white;
-      border:none;
-      padding:18px 30px;
-      border-radius:15px;
-      cursor:pointer;
-      font-size:18px;
-      transition:.3s;
-    }
+  cursor:pointer;
 
-    .input-group button:hover{
-      background:#1449d1;
-    }
+  transition:.3s;
+}
 
-    .messages{
-      margin-top:35px;
-    }
+.play-btn:hover{
+  transform:translateY(-3px);
+  background:#123b67;
+}
 
-    .message-item{
-      background:#0d1825;
-      padding:18px;
-      border-radius:15px;
-      margin-bottom:12px;
-      border-left:4px solid var(--primary);
-    }
+.play-icon{
+  width:44px;
+  height:44px;
 
-    .message-item strong{
-      display:block;
-      margin-bottom:8px;
-      color:#4b86ff;
-    }
+  border-radius:50%;
+  border:2px solid white;
 
-    /* =========================
-       FOOTER
-    ========================== */
+  display:flex;
+  justify-content:center;
+  align-items:center;
 
-    footer{
-      padding:35px;
-      text-align:center;
-      background:#050b12;
-      color:#aaa;
-    }
+  font-size:18px;
+}
 
-    /* =========================
-       RESPONSIVO
-    ========================== */
+/* =====================================
+   MODAL
+===================================== */
 
-    @media(max-width:900px){
+.video-modal{
+  position:fixed;
+  inset:0;
 
-      .menu{
-        position:fixed;
-        top:0;
-        right:-100%;
-        width:280px;
-        height:100vh;
-        background:#07111d;
-        flex-direction:column;
-        justify-content:center;
-        transition:.4s;
-      }
+  background:rgba(0,0,0,.85);
 
-      .menu.active{
-        right:0;
-      }
+  display:none;
+  justify-content:center;
+  align-items:center;
 
-      .menu-toggle{
-        display:flex;
-      }
+  z-index:2000;
 
-      .hero-content{
-        padding:150px 30px 80px;
-      }
+  padding:20px;
+}
 
-      .hero-title{
-        font-size:65px;
-      }
+.video-box{
+  width:100%;
+  max-width:900px;
+  aspect-ratio:16/9;
 
-      .subtitle{
-        font-size:20px;
-      }
-    }
+  background:#000;
 
-    @media(max-width:600px){
+  border-radius:20px;
+  overflow:hidden;
 
-      .topbar{
-        padding:18px 20px;
-      }
+  position:relative;
+}
 
-      .hero-title{
-        font-size:52px;
-      }
+.video-box iframe{
+  width:100%;
+  height:100%;
+  border:none;
+}
 
-      .play-btn{
-        width:100%;
-        justify-content:center;
-      }
+.close-modal{
+  position:absolute;
+  top:-50px;
+  right:0;
 
-      .section-title{
-        font-size:36px;
-      }
-    }
-  </style>
+  background:white;
+  color:black;
+
+  border:none;
+
+  width:40px;
+  height:40px;
+
+  border-radius:50%;
+
+  font-size:20px;
+  cursor:pointer;
+}
+
+/* =====================================
+   FOOTER
+===================================== */
+
+footer{
+  padding:35px;
+  text-align:center;
+
+  background:#050b12;
+  color:#aaa;
+}
+
+/* =====================================
+   RESPONSIVO
+===================================== */
+
+@media(max-width:900px){
+
+  .menu{
+    position:fixed;
+    top:0;
+    right:-100%;
+
+    width:280px;
+    height:100vh;
+
+    background:#07111d;
+
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    transition:.4s;
+  }
+
+  .menu.active{
+    right:0;
+  }
+
+  .hero-content{
+    padding:150px 30px 80px;
+  }
+
+  .hero-title{
+    font-size:65px;
+  }
+
+  .subtitle{
+    font-size:20px;
+  }
+
+}
+
+@media(max-width:600px){
+
+  .topbar{
+    padding:18px 20px;
+  }
+
+  .hero-title{
+    font-size:52px;
+  }
+
+  .play-btn{
+    width:100%;
+    justify-content:center;
+  }
+
+}
+
+</style>
 </head>
 
 <body>
 
-  <!-- =========================
-       HERO
-  ========================== -->
+<!-- =====================================
+     HERO
+===================================== -->
 
-  <section class="hero">
+<section class="hero">
 
-    <header class="topbar" id="topbar">
+<header class="topbar" id="topbar">
 
-      <div class="logo">
-        <div class="logo-icon">
-  <img src="a8e3819c-9c6b-4d0a-a923-50b76950900d.png" alt="Logo IAPE">
-</div>
+  <!-- LOGO -->
 
-        <div class="logo-text">
-          <h1>IAPE</h1>
-          <span>Instituto Adventista</span>
-        </div>
-      </div>
+  <div class="logo">
 
-      <nav class="menu" id="menu">
-        <a href="#matriculas">MATRÍCULAS</a>
-        <a href="#estrutura">ESTRUTURA</a>
-        <a href="#ensino" class="active">ENSINO</a>
-      </nav>
-
-      <div class="menu-toggle" id="menuToggle">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-
-    </header>
-
-    <div class="hero-content">
-
-      <div class="hero-left">
-
-        <div class="subtitle">
-          EDUCAÇÃO QUE TRANSFORMA
-        </div>
-
-        <h1 class="hero-title">
-          Muito Além <br>
-          do Ensino <br>
-          <span class="blue">Para a vida</span> inteira
-        </h1>
-
-        <button class="play-btn" id="playVideo">
-          <div class="play-icon">▶</div>
-          Reproduzir Vídeo
-        </button>
-
-      </div>
-
+    <div class="logo-icon">
+      <img src="a8e3819c-9c6b-4d0a-a923-50b76950900d.png" alt="Logo IAPE">
     </div>
 
-  </section>
+    <div class="logo-text">
+      <h1>IAPE</h1>
+      <span>Instituto Adventista</span>
+    </div>
 
-  <!-- =========================
-       CONTEÚDO
-  ========================== -->
+  </div>
 
-      <!-- FORM -->
+  <!-- MENU + BOTÃO -->
 
-  
-  <footer>
-    © 2026 IAPE - Todos os direitos reservados.
-  </footer>
+  <div class="right-area">
 
-  <!-- =========================
-       MODAL
-  ========================== -->
+    <nav class="menu" id="menu">
 
-  <div class="video-modal" id="videoModal">
+      <a href="#matriculas">MATRÍCULAS</a>
 
-    <div class="video-box">
+      <a href="#estrutura">ESTRUTURA</a>
 
-      <button class="close-modal" id="closeModal">✕</button>
+      <a href="#ensino" class="active">
+        ENSINO
+      </a>
 
-      <iframe
-        id="videoFrame"
-        src=""
-        allowfullscreen>
-      </iframe>
+    </nav>
+
+    <!-- MENU SANDUÍCHE -->
+
+    <div class="menu-toggle" id="menuToggle">
+
+      <span></span>
+      <span></span>
+      <span></span>
 
     </div>
 
   </div>
 
-  <!-- =========================
-       SCRIPT
-  ========================== -->
+</header>
 
-  <script>
+<!-- HERO CONTENT -->
 
-    /* =====================================
-       CONFIG
-    ===================================== */
+<div class="hero-content">
 
-    const CONFIG = {
+  <div class="hero-left">
 
-      /*
-      COLE A URL DO WEB APP DO APPS SCRIPT
-      */
+    <div class="subtitle">
+      EDUCAÇÃO QUE TRANSFORMA
+    </div>
 
-      WEB_APP_URL:
-      "https://script.google.com/macros/s/AKfycbw2NQkjcqj9VfhOpxG7fce8lRWSyjnmOfFlt9wDaFEQzhqvSaMbySXwHTtqmnG9DpIhUw/exec"
+    <h1 class="hero-title">
+      Muito Além <br>
+      do Ensino <br>
+      <span class="blue">Para a vida</span> inteira
+    </h1>
 
-    };
+    <button class="play-btn" id="playVideo">
 
-    /* =====================================
-       MENU MOBILE
-    ===================================== */
+      <div class="play-icon">▶</div>
 
-    const menuToggle = document.getElementById("menuToggle");
-    const menu = document.getElementById("menu");
+      Reproduzir Vídeo
 
-    menuToggle.addEventListener("click", () => {
-      menu.classList.toggle("active");
-    });
+    </button>
 
-    /* =====================================
-       HEADER SCROLL
-    ===================================== */
+  </div>
 
-    const topbar = document.getElementById("topbar");
+</div>
 
-    window.addEventListener("scroll", () => {
+</section>
 
-      if(window.scrollY > 50){
-        topbar.classList.add("scrolled");
-      }else{
-        topbar.classList.remove("scrolled");
-      }
+<!-- FOOTER -->
 
-    });
+<footer>
+  © 2026 IAPE - Todos os direitos reservados.
+</footer>
 
-    /* =====================================
-       VÍDEO
-    ===================================== */
+<!-- =====================================
+     MODAL
+===================================== -->
 
-    const playVideo = document.getElementById("playVideo");
-    const videoModal = document.getElementById("videoModal");
-    const closeModal = document.getElementById("closeModal");
-    const videoFrame = document.getElementById("videoFrame");
+<div class="video-modal" id="videoModal">
 
-    playVideo.addEventListener("click", () => {
+<div class="video-box">
 
-      videoModal.style.display = "flex";
+  <button class="close-modal" id="closeModal">
+    ✕
+  </button>
 
-      videoFrame.src =
-      "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1";
+  <iframe
+    id="videoFrame"
+    src=""
+    allowfullscreen>
+  </iframe>
 
-    });
+</div>
 
-    closeModal.addEventListener("click", () => {
+</div>
 
-      videoModal.style.display = "none";
-      videoFrame.src = "";
+<!-- =====================================
+     SCRIPT
+===================================== -->
 
-    });
+<script>
 
-    /* =====================================
-       JSONP
-    ===================================== */
+/* =====================================
+   MENU MOBILE
+===================================== */
 
-    function jsonp(url){
+const menuToggle =
+document.getElementById("menuToggle");
 
-      return new Promise((resolve, reject) => {
+const menu =
+document.getElementById("menu");
 
-        const callbackName =
-        "jsonp_callback_" + Math.round(100000 * Math.random());
+menuToggle.addEventListener("click", () => {
 
-        window[callbackName] = function(data){
+  menu.classList.toggle("active");
 
-          delete window[callbackName];
-          document.body.removeChild(script);
+  menuToggle.classList.toggle("active");
 
-          resolve(data);
-        };
+});
 
-        const script = document.createElement("script");
+/* FECHAR MENU AO CLICAR */
 
-        script.src =
-        url + (url.includes("?") ? "&" : "?") +
-        "callback=" + callbackName;
+document.querySelectorAll(".menu a")
+.forEach(link => {
 
-        script.onerror = function(){
+  link.addEventListener("click", () => {
 
-          delete window[callbackName];
-          document.body.removeChild(script);
+    menu.classList.remove("active");
 
-          reject("Erro JSONP");
+    menuToggle.classList.remove("active");
 
-        };
+  });
 
-        document.body.appendChild(script);
+});
 
-      });
+/* =====================================
+   HEADER SCROLL
+===================================== */
 
-    }
+const topbar =
+document.getElementById("topbar");
 
-    /* =====================================
-       SALVAR
-    ===================================== */
+window.addEventListener("scroll", () => {
 
-    async function saveMessage(){
+  if(window.scrollY > 50){
 
-      const name =
-      document.getElementById("name").value.trim();
+    topbar.classList.add("scrolled");
 
-      const message =
-      document.getElementById("message").value.trim();
+  }else{
 
-      if(!name || !message){
+    topbar.classList.remove("scrolled");
 
-        alert("Preencha todos os campos.");
-        return;
+  }
 
-      }
+});
 
-      try{
+/* =====================================
+   VÍDEO
+===================================== */
 
-        await jsonp(
+const playVideo =
+document.getElementById("playVideo");
 
-          `${CONFIG.WEB_APP_URL}?action=add&name=${encodeURIComponent(name)}&message=${encodeURIComponent(message)}`
+const videoModal =
+document.getElementById("videoModal");
 
-        );
+const closeModal =
+document.getElementById("closeModal");
 
-        document.getElementById("name").value = "";
-        document.getElementById("message").value = "";
+const videoFrame =
+document.getElementById("videoFrame");
 
-        loadMessages();
+playVideo.addEventListener("click", () => {
 
-        alert("Mensagem enviada com sucesso!");
+  videoModal.style.display = "flex";
 
-      }catch(error){
+  videoFrame.src =
+  "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1";
 
-        alert("Erro ao salvar.");
+});
 
-      }
+closeModal.addEventListener("click", () => {
 
-    }
+  videoModal.style.display = "none";
 
-    /* =====================================
-       LISTAR
-    ===================================== */
+  videoFrame.src = "";
 
-    async function loadMessages(){
+});
 
-      try{
-
-        const data = await jsonp(
-
-          `${CONFIG.WEB_APP_URL}?action=list`
-
-        );
-
-        const container =
-        document.getElementById("messages");
-
-        container.innerHTML = "";
-
-        data.forEach(item => {
-
-          container.innerHTML += `
-            <div class="message-item">
-              <strong>${item.name}</strong>
-              <div>${item.message}</div>
-            </div>
-          `;
-
-        });
-
-      }catch(error){
-
-        console.error(error);
-
-      }
-
-    }
-
-    loadMessages();
-
-  </script>
+</script>
 
 </body>
 </html>
